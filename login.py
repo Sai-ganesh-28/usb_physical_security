@@ -14,7 +14,7 @@ import mysql.connector
 def ok1():
     ei=e1.get()
     pas=e2.get()
-    conn=mysql.connector.connect(host="localhost", user="root", password="", database="sup_database")
+    conn=mysql.connector.connect(host="localhost", user="root", password="", database="database")
     my_cursor=conn.cursor()
     sql="select * from user where eid=%s and password=%s"
     val=(ei,pas)
@@ -37,8 +37,8 @@ def ok1():
         def send_email(to_email, subject, body):
             smtp_server = 'smtp-mail.outlook.com'
             smtp_port = 587
-            sender_email = 'a.dminusb@outlook.com'
-            sender_password = 'admin2811'
+            sender_email = 'sender@outlook.com'
+            sender_password = 'sender'
             message = MIMEMultipart()
             message['From'] = sender_email
             message['To'] = to_email
