@@ -12,7 +12,7 @@ import mysql.connector
 def main():
   def pro_info():
       import webbrowser
-      f=open("1.html","w")
+      f=open("html file name","w")
       message='''
       <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +48,6 @@ def main():
 </head>
 <body>
   <h2>PROJECT INFORMATION</h2>
-  <p>This project was developed by <b>team-9</b> as part of cyber security internship<br>
-     This project is designed to protect the system from the usb threat by disabling the usb ports</p>
   <table>
     <thead>
       <tr style="color: black;background-color:#green;">
@@ -66,88 +64,19 @@ def main():
         <td>Project Description</td>
         <td>The USB Physical Security refers to the set of mechanisms and techniques used to secure and control the access of devices to USB ports</td>
       </tr>
-      <tr>
-        <td>Project Start Date</td>
-        <td>17-12-23</td>
-      </tr>
-      <tr>
-        <td>Project End Date</td>
-        <td>31-12-23</td>
-      </tr>
-      <tr>
-        <td>Project Status</td>
-        <td><b>In Progress</b></td>
-      </tr>
     </tbody>
   </table>
-
-  <h2><b>DEVELOPER DEGTAILS</b></h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Employee ID</th>
-        <th>Employee Name</th>
-        <th>Email ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>ST#IS#6048</td>
-        <td>D.Spoorthi</td>
-        <td>domalaspoorthi@gmail.com</td>
-      </tr>
-      <tr>
-        <td>ST#IS#6049</td>
-        <td>M.Sai Ganesh Reddy</td>
-        <td>m.saiganesh2811@gmail.com</td>
-      </tr>
-      <tr>
-        <td>ST#IS#6050</td>
-        <td>V.Poojitha</td>
-        <td>saipoojitha.veggalam@gmail.com</td>
-      </tr>
-      <tr>
-        <td>ST#IS#6051</td>
-        <td>R.Nikitha</td>
-        <td>rnikitha458@gmail.com</td>
-      </tr>
-      <tr>
-        <td>ST#IS#6052</td>
-        <td>M.lahari</td>
-        <td>lahari4210@gmail.com</td>
-      </tr>
-    </tbody>
+  
   </table>
-
-  <h2><b>MENTOR DETAILS</b></h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Mentor Names</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Santosh Chaluvadi(CEO)</td>
-      </tr>
-      <tr>
-        <td>Upendar</td>
-      </tr>
-      <tr>
-        <td>Krishna</td>
-      </tr>
-    </tbody>
-  </table>
-
 </body>
 </html>
 
       '''
       f.write(message)
       f.close()
-      webbrowser.open_new_tab("1.html")
+      webbrowser.open_new_tab("html file name")
   root = tk.Tk()
-  image = Image.open('C:/Users/lahar/Desktop/images1.png')
+  image = Image.open('image location')
   new_size=(200,200)
   b3=tk.Button(root, text="Project INFO" ,font=("Menlo" ,11), bg="red",fg="white",command=pro_info)
   b3.pack()
@@ -207,7 +136,7 @@ def main():
        pass_enter=tk.Entry(pass_open, show="$")
        pass_enter.pack()
        def ok_btn():
-            conn=mysql.connector.connect(host="localhost", user="root", password="", database="sup_database")
+            conn=mysql.connector.connect(host="localhost", user="root", password="", database="database")
             my_cursor=conn.cursor()
             res=pass_enter.get()
             sql="select passwords from why where passwords=%s and sno=%s"
@@ -219,7 +148,7 @@ def main():
                 subprocess.call(command, shell=True)
                 res1=pass_enter.get()
                 success_label.config(text="USB PORTS ARE ENABLE SUCCESS",bg='black',fg='white')
-                conn=mysql.connector.connect(host="localhost", user="root", password="", database="sup_database")
+                conn=mysql.connector.connect(host="localhost", user="root", password="", database="database")
                 my_cursor=conn.cursor()
                 sql1="delete from why where sno=%s and passwords=%s"
                 val1=(1,res1)
@@ -252,7 +181,7 @@ def main():
               pn=e3.get()
               ei=e4.get()
               pas=e5.get()
-              conn=mysql.connector.connect(host="localhost", user="root", password="", database="sup_database")
+              conn=mysql.connector.connect(host="localhost", user="root", password="", database="database")
               my_cursor=conn.cursor()
               sql="INSERT INTO user(Fname,Lname,Pno,eid,password) VALUES (%s ,%s, %s, %s, %s)"
               val=(fn,ln,pn,ei,pas)
@@ -302,7 +231,7 @@ def main():
     def ok1():
       ei=e1.get()
       pas=e2.get()
-      conn=mysql.connector.connect(host="localhost", user="root", password="", database="sup_database")
+      conn=mysql.connector.connect(host="localhost", user="root", password="", database="database")
       my_cursor=conn.cursor()
       sql="select * from user where eid=%s and password=%s"
       val=(ei,pas)
@@ -314,7 +243,7 @@ def main():
           characters=string.ascii_letters + string.digits + string.punctuation
           password=''.join(random.choice(characters) for _ in range(8))
           a=password
-          conn=mysql.connector.connect(host="localhost", user="root", password="", database="sup_database")
+          conn=mysql.connector.connect(host="localhost", user="root", password="", database="database")
           my_cursor=conn.cursor()
           sql="INSERT INTO why(passwords,sno) VALUES (%s, %s)"
           val=(a,1)
@@ -324,8 +253,8 @@ def main():
           def send_email(to_email, subject, body):
             smtp_server = 'smtp-mail.outlook.com'
             smtp_port = 587
-            sender_email = 'a.dminusb@outlook.com'
-            sender_password = 'admin2811'
+            sender_email = 'sender@outlook.com'
+            sender_password = 'sender'
             message = MIMEMultipart()
             message['From'] = sender_email
             message['To'] = to_email
